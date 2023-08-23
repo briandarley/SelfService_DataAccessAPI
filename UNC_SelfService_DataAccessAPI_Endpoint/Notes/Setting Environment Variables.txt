@@ -1,0 +1,34 @@
+Below is a command line utility to set environment variables on windows
+setx SelfServiceDB_Production "Data Source=server_name_goes_here;Initial Catalog=database_name_goes_here;MultipleActiveResultSets=true;Application Name=UNC_SelfService_DataAccessAPI;Integrated Security=True;TrustServerCertificate=true"
+
+SelfServiceDB_Development (local) localhost,1433
+SelfServiceDB_Test
+SelfServiceDB_UAT
+SelfServiceDB_Production
+
+
+  
+setx IdentityConnection_Production "{\"IdentityServer\": \"https://selfservice.unc.edu/identityserver\",\"RequireHttpsMetadata\": false,\"ClientId\": \"INTERNAL_API\",\"ClientSecret\": \"w=6JD=\\,V?M5{_5J\",\"Scope\": \"LOGGING_ACCESS\",\"SkipAuth\": true}"
+setx IdentityConnection_UAT "{\"IdentityServer\": \"https://its-idmuat-web.ad.unc.edu/identityserver\",\"RequireHttpsMetadata\": false,\"ClientId\": \"INTERNAL_API\",\"ClientSecret\": \"w=6JD=\\,V?M5{_5J\",\"Scope\": \"LOGGING_ACCESS\",\"SkipAuth\": true}"
+setx IdentityConnection_Test "{\"IdentityServer\": \"https://its-idmtst-web.adtest.unc.edu/identityserver\",\"RequireHttpsMetadata\": false,\"ClientId\": \"INTERNAL_API\",\"ClientSecret\": \"w=6JD=\\,V?M5{_5J\",\"Scope\": \"LOGGING_ACCESS\",\"SkipAuth\": true}"
+setx IdentityConnection_Development "{\"IdentityServer\": \"https://localhost:4000\",\"RequireHttpsMetadata\": false,\"ClientId\": \"INTERNAL_API\",\"ClientSecret\": \"w=6JD=\\,V?M5{_5J\",\"Scope\": \"LOGGING_ACCESS\",\"SkipAuth\": true}"  
+
+setx Logging_Production "https://its-idmprd-app.ad.unc.edu/Services/logging.api/v1/"
+setx Logging_UAT "https://its-idmuat-web.ad.unc.edu/Services/logging.api/v1/"
+setx Logging_Test "https://its-idmtst-app.adtest.unc.edu/Services/logging.api/v1/"
+setx Logging_Development "https://its-idmtst-app.adtest.unc.edu/Services/logging.api/v1/"
+
+
+
+"IdentityConnection": {
+    //"IdentityServer": "http://its-idmtst-web.adtest.unc.edu/identityserver",
+    "IdentityServer": "https://localhost:4000",
+    "RequireHttpsMetadata": false,
+    "ClientId": "INTERNAL_API",
+    "ClientSecret": "w=6JD=\\,V?M5{_5J",
+    "Scope": "LOGGING_ACCESS",
+
+    //we can skip auth requirement if needed in local environment, 
+    //will still need to authenticate to DAL_DATA_ACCESS regardless of this setting
+    "SkipAuth": true
+  }

@@ -1,0 +1,34 @@
+{
+  "Serilog": {
+    "Using": [ "Serilog.Sinks.Console" ],
+    "MinimumLevel": "Information",
+    "LogFilePath": "c:\\logs\\",
+    "WriteTo": [
+      {
+        "Name": "Console",
+        "Args": {
+          "restrictedToMinimumLevel": "Information"
+        }
+      },
+      {
+        "Name": "ApiLogSink",
+        "Args": {
+          "restrictedToMinimumLevel": "Warning"
+        }
+
+      },
+      {
+        "Name": "File",
+        "Args": {
+          "_path": "Logs/",
+          "formatter": "Serilog.Formatting.Json.JsonFormatter, Serilog",
+          "rollingInterval": "Day",
+          "restrictedToMinimumLevel": "Warning"
+        }
+      }
+
+    ]
+
+
+  }
+}

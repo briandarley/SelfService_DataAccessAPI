@@ -1,0 +1,229 @@
+## .NET Core
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]og[s]/
+
+# Uncomment if you have tasks that create the project's static files in wwwroot
+#wwwroot/
+
+## ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Rider
+.idea/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# VS Code directories
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# JetBrains Rider
+.idea/
+
+# ASP.NET Core
+wwwroot/
+**/Properties/launchSettings.json
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Tye
+.tye/
+
+# Visual Studio for Mac
+.vscode/
+.vscode/
+*.rider/
+.idea/
+
+# Rider
+.idea/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# OSX
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# VS Code directories
+.vscode/
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# JetBrains Rider
+.idea/
+
+# ASP.NET Core
+wwwroot/
+**/Properties/launchSettings.json
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Tye
+.tye/
+
+# Visual Studio for Mac
+.vscode/
+*.rider/
+.idea/
+
+# Rider
+.idea/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Node
+node_modules/
+package-lock.json
+yarn.lock
+
+# Rider
+.idea/
+
+# .NET Core
+*.swp
+*.*~.swp
+
+# Log Files
+*.log
+
+# Database
+*.db
+
+# Dotnet script
+*.csx
+
+# dotenv
+.env
+*.env.local
+
+# Test Results
+TestResults/
+**/[Tt]est[Rr]esult*.xml
+**/[Tt]est[Rr]esult*.trx
+results/
+
+# .NET Ignore
+*.user
+*.agg.rb
+*.pidb
+*.svclog
+*.scc
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Installer logs
+*.cab
+*.msi
+*.msm
+*.msp
+
+# JetBrains Rider
+.idea/
+
+# ASP.NET Core
+wwwroot/
+**/Properties/launchSettings.json
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Debugger directory
+*.opendb
+*.openj9
+
+# Others
+*.swp
+*.swo
+*.bak
+*.tmp
+*~
+*.db

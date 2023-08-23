@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    
+  </PropertyGroup>
+
+  <ItemGroup>
+    
+    <PackageReference Include="UNC.API.Base" Version="2.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UNC_SelfService_DataAccessAPI_Services\UNC_SelfService_DataAccessAPI_Services.csproj" />
+  </ItemGroup>
+
+  
+
+</Project>

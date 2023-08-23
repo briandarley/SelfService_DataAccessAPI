@@ -1,0 +1,10 @@
+{
+  "ConnectionStrings": {
+    "SelfServiceDB": "SelfServiceDB-Development"
+  },
+  "IdentityConnection": "IdentityConnection-Development",
+  "Logging_API": "Logging-Development"
+
+  
+
+}

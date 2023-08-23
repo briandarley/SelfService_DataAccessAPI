@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="UNC.LogHandler" Version="2.1.29" />
+		<PackageReference Include="UNC.Services" Version="2.*" />
+		<PackageReference Include="UNC.HttpClient" Version="2.*" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Criteria\" />
+	  <Folder Include="Types\" />
+	</ItemGroup>
+</Project>
