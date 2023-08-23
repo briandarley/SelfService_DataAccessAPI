@@ -10,6 +10,7 @@ namespace UNC_SelfService_DataAccessAPI_Repository
         }
         
         public DbSet<AppSetting> AppSettings { get; set; }
+        public DbSet<ApiEndpoint> ApiEndpoints { get; set; }
 
         public async Task MigrateDatabase()
         {
@@ -21,7 +22,7 @@ namespace UNC_SelfService_DataAccessAPI_Repository
         {
         
             BuildModelForAppSettings(builder);
-
+            BuildModelForApiEndpoint(builder);
             //SeedDatabase(builder);
 
         }
@@ -41,6 +42,23 @@ namespace UNC_SelfService_DataAccessAPI_Repository
                 entry.Property(c => c.ChangeDate).HasDefaultValueSql("getdate()");
                 entry.Property(c => c.ChangeUser).HasMaxLength(50).HasDefaultValue("System");
 
+
+            });
+        }
+        private void BuildModelForApiEndpoint(ModelBuilder builder)
+        {
+            builder.Entity<ApiEndpoint>(entry =>
+            {
+                entry.ToTable("ApiEndpoint");
+                entry.HasKey(c => c.Id);
+                entry.Property(c => c.Name).HasMaxLength(50);
+                entry.Property(c => c.Description).HasMaxLength(255);
+                entry.Property(c => c.Uri).HasMaxLength(255);
+                entry.Property(c => c.Environment).HasMaxLength(255);
+                entry.Property(c => c.CreateDate).HasDefaultValueSql("getdate()");
+                entry.Property(c => c.CreateUser).HasMaxLength(50).HasDefaultValue("System");
+                entry.Property(c => c.ChangeDate).HasDefaultValueSql("getdate()");
+                entry.Property(c => c.ChangeUser).HasMaxLength(50).HasDefaultValue("System");
 
             });
         }

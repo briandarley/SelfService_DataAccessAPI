@@ -13,5 +13,8 @@
   <ItemGroup>
     <ProjectReference Include="..\UNC_SelfService_DataAccessAPI_Repository\UNC_SelfService_DataAccessAPI_Repository.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Commands\UtilityDb\" />
+  </ItemGroup>
 
 </Project>

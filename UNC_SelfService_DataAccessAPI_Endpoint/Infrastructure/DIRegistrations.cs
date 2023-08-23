@@ -10,6 +10,7 @@ using UNC.Services.Utilities;
 using UNC_SelfService_DataAccessAPI_Repository;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace UNC_SelfService_DataAccessAPI_Endpoint.Infrastructure
 {
     internal static class DIRegistrations
@@ -88,6 +89,7 @@ namespace UNC_SelfService_DataAccessAPI_Endpoint.Infrastructure
 
         private static void RegisterInfrastructureServices(this IServiceCollection services)
         {
+            services.AddTransient<UNC_SelfService_DataAccessAPI_Services.Interfaces.Services.UtilityDb.IUtilityDbService, UNC_SelfService_DataAccessAPI_Services.Services.UtilityDb.UtilityDbService>();
             //services.AddTransient<UNC.DAL.Data.Infrastructure.Interfaces.Services.UtilityDb.IUtilityDbService, UNC.DAL.Data.Infrastructure.Services.UtilityDb.UtilityDbService>();
             //services.AddTransient<UNC.DAL.Data.Infrastructure.Interfaces.Services.SplunkDb.ISplunkDbService, UNC.DAL.Data.Infrastructure.Services.SplunkDb.SplunkDbService>();
             //services.AddTransient<UNC.DAL.Data.Infrastructure.Interfaces.Services.MidPointDb.IMidPointDbServices, UNC.DAL.Data.Infrastructure.Services.MidPointDb.MidPointDbServices>();
@@ -101,7 +103,8 @@ namespace UNC_SelfService_DataAccessAPI_Endpoint.Infrastructure
 
         private static void RegisterDatabaseUnitOfWork(this IServiceCollection services)
         {
-            //services.AddTransient<IUtilityDbContext, UNC.DAL.Data.Infrastructure.DatabaseContexts.UtilityDbContext>();
+            services.AddTransient<UNC_SelfService_DataAccessAPI_BusinessLogic.Interfaces.Services.UtilityDb.IUtilityDbService, UNC_SelfService_DataAccessAPI_BusinessLogic.Services.UtilityDb.UtilityDbService>();
+
             //services.AddTransient<IMidPointDbContext, UNC.DAL.Data.Infrastructure.DatabaseContexts.MidPointDbContext>();
             //services.AddTransient<ISplunkDbContext, UNC.DAL.Data.Infrastructure.DatabaseContexts.SplunkDbContext>();
             //services.AddTransient<IWinToolsDbContext, UNC.DAL.Data.Infrastructure.DatabaseContexts.WinToolsDbContext>();

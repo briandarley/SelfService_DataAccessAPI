@@ -13,7 +13,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Criteria\" />
 	  <Folder Include="Types\" />
 	</ItemGroup>
 </Project>
