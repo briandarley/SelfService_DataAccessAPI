@@ -3,8 +3,10 @@
     "SelfServiceDB": "SelfServiceDB-Development"
   },
   "IdentityConnection": "IdentityConnection-Development",
-  "Logging_API": "Logging-Development"
 
-  
+
+  "Lookup_Endpoints": {
+    "LOGGING": "Logging-Development"
+  }
 
 }

@@ -11,11 +11,16 @@ builder.Configuration.SetBasePath(Directory.GetCurrentDirectory());
 
 var configuration = ConfigurationFileReaderService.GetConfiguration<Program>(builder);
 builder.Configuration.AddConfiguration(configuration);
-builder.Services.RegisterDependencies(configuration);
-
-var logger = UNC.LogHandler.Extensions.Extensions.GetLoggerForBuildCycle<Program>(configuration, LogLevel.Debug);
 
 
+ILogger logger = null;
+
+if(Debugger.IsAttached)
+{
+    //logger = UNC.LogHandler.Extensions.Extensions.GetLoggerForBuildCycle<Program>(configuration, LogLevel.Debug);
+}
+
+builder.Services.RegisterDependencies(configuration,logger);
 builder.Host.RegisterSerilog(logger);
 
 
@@ -30,6 +35,7 @@ if (!app.Environment.IsDevelopment() && !Debugger.IsAttached)
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
 
 app.UseHttpsRedirection();
 //app.UseStaticFiles();

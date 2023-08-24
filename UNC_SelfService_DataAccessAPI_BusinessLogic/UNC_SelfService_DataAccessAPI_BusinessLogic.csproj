@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <!--<ProjectReference Include="..\..\..\..\..\..\UNC\Shared Components\Dotnet Core\UNC.API.Base\UNC.API.Base.csproj" />-->
     <ProjectReference Include="..\UNC_SelfService_DataAccessAPI_Services\UNC_SelfService_DataAccessAPI_Services.csproj" />
   </ItemGroup>
 

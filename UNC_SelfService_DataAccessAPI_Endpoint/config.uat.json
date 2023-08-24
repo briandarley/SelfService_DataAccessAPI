@@ -1,0 +1,8 @@
+{
+  "ConnectionStrings": {
+    "SelfServiceDB": "SelfServiceDB_UAT"
+  },
+  "IdentityConnection": "IdentityConnection_UAT",
+  "LOGGING": "Logging_UAT"
+
+}

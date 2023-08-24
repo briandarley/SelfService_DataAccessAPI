@@ -16,15 +16,9 @@ namespace UNC_SelfService_DataAccessAPI_Endpoint.Infrastructure
     internal static class DIRegistrations
     {
 
-        public static void RegisterDependencies(this IServiceCollection services, IConfiguration configuration)
+        public static void RegisterDependencies(this IServiceCollection services, IConfiguration configuration, ILogger logger)
         {
-            ILogger logger = null;
-            if (Debugger.IsAttached)
-            {
-                // Create LoggerFactory
-                var loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
-                logger = loggerFactory.CreateLogger<Program>();
-            }
+            
 
             services.RegisterDefaultUserPrincipal();
             services.RegisterHttpClientDependencies();

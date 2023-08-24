@@ -3,13 +3,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using UNC.Extensions.General;
 using UNC.Services;
+using UNC.Services.Responses;
 using UNC_SelfService_DataAccessAPI_Common.Entities.UtilityDb;
 using UNC_SelfService_DataAccessAPI_Repository;
 using UNC_SelfService_DataAccessAPI_Services.Queries.UtilityDb;
 
 namespace UNC_SelfService_DataAccessAPI_Services.Handlers.UtilityDb
 {
-    public class GetAppSettingsHandler : ServiceBase<GetAppSettingsHandler>, IRequestHandler<GetAppSettingsQuery, List<AppSetting>>
+    public class GetAppSettingsHandler : ServiceBase<GetAppSettingsHandler>, IRequestHandler<GetAppSettingsQuery, ServiceResult<List<AppSetting>>>
     {
         private readonly UtilityDbContext _dbContext;
 
@@ -18,14 +19,14 @@ namespace UNC_SelfService_DataAccessAPI_Services.Handlers.UtilityDb
             _dbContext = dbContext;
         }
 
-        public async Task<List<AppSetting>> Handle(GetAppSettingsQuery request, CancellationToken cancellationToken)
+        public async Task<ServiceResult<List<AppSetting>>> Handle(GetAppSettingsQuery request, CancellationToken cancellationToken)
         {
 
                 var query = _dbContext.AppSettings.AsNoTracking().AsQueryable();
 
                 if (request.Criteria == null)
                 {
-                    return await query.ToListAsync(cancellationToken);
+                    return new ServiceResult<List<AppSetting>>(await query.ToListAsync(cancellationToken));
                 }
 
                 if (request.Criteria.Id.HasValue)
@@ -48,7 +49,7 @@ namespace UNC_SelfService_DataAccessAPI_Services.Handlers.UtilityDb
                     query = query.Where(c => c.AppDomain == request.Criteria.AppDomain);
                 }
 
-                return await query.ToListAsync(cancellationToken);
+                return new ServiceResult<List<AppSetting>>(await query.ToListAsync(cancellationToken));
 
            
         }

@@ -1,0 +1,7 @@
+{
+  "ConnectionStrings": {
+    "SelfServiceDB": "SelfServiceDB_Production"
+  },
+  "IdentityConnection": "IdentityConnection_Production",
+  "LOGGING": "Logging_Production"
+}
