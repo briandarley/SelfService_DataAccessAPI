@@ -7,9 +7,9 @@
   </PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="UNC.LogHandler" Version="2.*" />
-		<PackageReference Include="UNC.Services" Version="2.*" />
-		<PackageReference Include="UNC.HttpClient" Version="2.*" />
+		<PackageReference Include="UNC.LogHandler" Version="2.1.36" />
+		<PackageReference Include="UNC.Services" Version="2.1.53" />
+		<PackageReference Include="UNC.HttpClient" Version="2.1.37" />
 	</ItemGroup>
 
 	<ItemGroup>

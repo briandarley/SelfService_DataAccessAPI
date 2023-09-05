@@ -22,10 +22,23 @@ namespace UNC_SelfService_DataAccessAPI_BusinessLogic.Services.UtilityDb
         }
         public Task<ServiceResult<AppSetting>> AddAppSetting(AppSetting entity, CancellationToken cancellationToken)
         {
+            var validationErrors = ValidateModel(entity, out var isValid);
+
+            if (!isValid)
+            {
+                return Task.FromResult(new ServiceResult<AppSetting>(null) { Errors = validationErrors.Select(c=> c.ErrorMessage).ToList() });
+            }
+
             return _service.AddAppSetting(entity, cancellationToken);
         }
         public async Task<ServiceResult<bool>> UpdateAppSetting(AppSetting entity, CancellationToken cancellationToken)
         {
+            var validationErrors = ValidateModel(entity, out var isValid);
+
+            if (!isValid)
+            {
+                return new ServiceResult<bool>(false) { Errors = validationErrors.Select(c => c.ErrorMessage).ToList() };
+            }
 
             var request = await _service.GetAppSettings(new AppSettingsCriteria { Id = entity.Id }, cancellationToken);
             if (request.Success)
@@ -45,7 +58,7 @@ namespace UNC_SelfService_DataAccessAPI_BusinessLogic.Services.UtilityDb
         }
         public async Task<ServiceResult<bool>> DeleteAppSetting(int entityId, CancellationToken cancellationToken)
         {
-            
+
             var request = await _service.GetAppSettings(new AppSettingsCriteria { Id = entityId }, cancellationToken);
             if (request.Success)
             {
@@ -59,9 +72,111 @@ namespace UNC_SelfService_DataAccessAPI_BusinessLogic.Services.UtilityDb
                     return new ServiceResult<bool>(false, "ResourceNotFound");
                 }
             }
-            
+
             return new ServiceResult<bool>(false) { Errors = request.Errors };
         }
 
+        public Task<ServiceResult<List<ApiEndpoint>>> GetApiEndpoints(ApiEndpointCriteria criteria, CancellationToken cancellationToken)
+        {
+            return _service.GetApiEndpoints(criteria, cancellationToken);
+        }
+
+        public Task<ServiceResult<ApiEndpoint>> AddApiEndpoint(ApiEndpoint entity, CancellationToken cancellationToken)
+        {
+            var validationErrors = ValidateModel(entity, out var isValid);
+
+            if (!isValid)
+            {
+                return Task.FromResult(new ServiceResult<ApiEndpoint>(null) { Errors = validationErrors.Select(c => c.ErrorMessage).ToList() });
+            }
+            return _service.AddApiEndpoint(entity, cancellationToken);
+        }
+
+        public Task<ServiceResult<bool>> UpdateApiEndpoint(ApiEndpoint entity, CancellationToken cancellationToken)
+        {
+            var validationErrors = ValidateModel(entity, out var isValid);
+
+            if (!isValid)
+            {
+                return Task.FromResult(new ServiceResult<bool>(false) { Errors = validationErrors.Select(c => c.ErrorMessage).ToList() });
+            }
+
+            return _service.UpdateApiEndpoint(entity, cancellationToken);
+        }
+
+        public Task<ServiceResult<bool>> DeleteApiEndpoint(int entityId, CancellationToken cancellationToken)
+        {
+            return _service.DeleteApiEndpoint(entityId, cancellationToken);
+        }
+
+        public Task<ServiceResult<PagedResponse<OrganizationalUnit>>> GetOrganizationalUnits(OrganizationalUnitCriteria criteria, CancellationToken cancellationToken)
+        {
+            return _service.GetOrganizationalUnits(criteria, cancellationToken);
+        }
+        public Task<ServiceResult<OrganizationalUnit>> AddOrganizationalUnit(OrganizationalUnit entity, CancellationToken cancellationToken)
+        {
+            var validationErrors = ValidateModel(entity, out var isValid);
+
+            if (!isValid)
+            {
+                return Task.FromResult(new ServiceResult<OrganizationalUnit>(null) { Errors = validationErrors.Select(c=> c.ErrorMessage).ToList() });
+            }
+
+            return _service.AddOrganizationalUnit(entity, cancellationToken);
+        }
+        public async Task<ServiceResult<bool>> UpdateOrganizationalUnit(OrganizationalUnit entity, CancellationToken cancellationToken)
+        {
+            var validationErrors = ValidateModel(entity, out var isValid);
+
+            if (!isValid)
+            {
+                return new ServiceResult<bool>(false) { Errors = validationErrors.Select(c => c.ErrorMessage).ToList() };
+            }
+
+            var request = await _service.GetOrganizationalUnits(new OrganizationalUnitCriteria { Id = entity.Id }, cancellationToken);
+            if (request.Success)
+            {
+                if(request.Data.TotalRecords != 1)
+                {
+                    return new ServiceResult<bool>(false, "ResourceNotFound");
+                }
+                return await _service.UpdateOrganizationalUnit(entity, cancellationToken);
+            }
+            return new ServiceResult<bool>(false) { Errors = request.Errors };
+        }
+        public async Task<ServiceResult<bool>> DeleteOrganizationalUnit(int entityId, CancellationToken cancellationToken)
+        {
+
+            var request = await _service.GetOrganizationalUnits(new OrganizationalUnitCriteria { Id = entityId }, cancellationToken);
+            if (request.Success)
+            {
+                if (request.Data.TotalRecords != 1)
+                {
+                    return new ServiceResult<bool>(false, "ResourceNotFound");
+                }
+
+                return await _service.DeleteOrganizationalUnit(entityId, cancellationToken);
+            }
+
+            return new ServiceResult<bool>(false) { Errors = request.Errors };
+        }
+
+        public async Task<ServiceResult<List<OrganizationalUnitAdmin>>> GetOrganizationalUnitAdmins(OrganizationalUnitAdminCriteria criteria, CancellationToken cancellationToken)
+        {
+            var request = await _service.GetOrganizationalUnits(new OrganizationalUnitCriteria { Id = criteria.OrganizationalUnitId }, cancellationToken);
+            if (request.Success)
+            {
+                if (request.Data.TotalRecords != 1)
+                {
+                    return new ServiceResult<List<OrganizationalUnitAdmin>>(null)
+                    {
+                        Errors = new List<string> { "ResourceNotFound" }
+                    };
+                }
+            }
+
+
+            return await _service.GetOrganizationalUnitAdmins(criteria, cancellationToken);
+        }
     }
 }

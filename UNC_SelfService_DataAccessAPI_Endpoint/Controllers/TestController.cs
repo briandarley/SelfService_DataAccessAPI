@@ -20,6 +20,7 @@ namespace UNC_SelfService_DataAccessAPI_Endpoint.Controllers
         [HttpGet]
         public IActionResult Get()
         {
+            LogWarning("TestController.Get() called");
             return Ok("Hello World!");
         }
         [HttpGet, Route("api-endpoints")]

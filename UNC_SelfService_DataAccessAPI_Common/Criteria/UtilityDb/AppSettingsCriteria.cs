@@ -1,6 +1,9 @@
-﻿namespace UNC_SelfService_DataAccessAPI_Common.Criteria.UtilityDb
+﻿using UNC.Services.Criteria;
+using UNC_SelfService_DataAccessAPI_Common.Entities.UtilityDb;
+
+namespace UNC_SelfService_DataAccessAPI_Common.Criteria.UtilityDb
 {
-    public class AppSettingsCriteria
+    public class AppSettingsCriteria:BaseCriteria<AppSetting>
     {
         public int? Id { get; set; }
         public string Name { get; set; }

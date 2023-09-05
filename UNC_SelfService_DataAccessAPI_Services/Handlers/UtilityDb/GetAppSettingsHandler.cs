@@ -22,6 +22,10 @@ namespace UNC_SelfService_DataAccessAPI_Services.Handlers.UtilityDb
         public async Task<ServiceResult<List<AppSetting>>> Handle(GetAppSettingsQuery request, CancellationToken cancellationToken)
         {
 
+            try
+            {
+                LogBeginRequest();
+
                 var query = _dbContext.AppSettings.AsNoTracking().AsQueryable();
 
                 if (request.Criteria == null)
@@ -50,6 +54,21 @@ namespace UNC_SelfService_DataAccessAPI_Services.Handlers.UtilityDb
                 }
 
                 return new ServiceResult<List<AppSetting>>(await query.ToListAsync(cancellationToken));
+
+            }
+            catch (Exception ex)
+            {
+                LogException(ex, false);
+
+                return new ServiceResult<List<AppSetting>>(null)
+                {
+                    Errors = new List<string> { ex.Message }
+                };
+            }
+            finally
+            {
+                LogEndRequest();
+            }
 
            
         }

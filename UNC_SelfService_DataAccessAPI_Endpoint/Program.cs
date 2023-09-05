@@ -4,11 +4,12 @@ using UNC.API.Base.Infrastructure;
 using UNC.LogHandler.Extensions;
 using UNC.Services.Infrastructure;
 using UNC_SelfService_DataAccessAPI_Endpoint.Infrastructure;
-
+using HotChocolate.AspNetCore;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 builder.Configuration.SetBasePath(Directory.GetCurrentDirectory());
 
+//var configuration = ConfigurationFileReaderService.GetConfiguration<Program>(builder);
 var configuration = ConfigurationFileReaderService.GetConfiguration<Program>(builder);
 builder.Configuration.AddConfiguration(configuration);
 
@@ -37,14 +38,16 @@ if (!app.Environment.IsDevelopment() && !Debugger.IsAttached)
 }
 
 
-app.UseHttpsRedirection();
-//app.UseStaticFiles();
-
-//app.UseRouting();
-
-//app.UseAuthorization();
 
 app.ConfigureAppMiddleware(RegisterSwaggerMappings);
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapGraphQL("/graphql").WithOptions(new GraphQLServerOptions
+    {
+        Tool = { Enable = true } // Enables Banana Cake Pop
+    });// Adds GraphQL middleware
+});
 
 app.Run();
 

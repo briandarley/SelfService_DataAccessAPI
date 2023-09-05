@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using UNC.API.Base.Infrastructure;
+﻿using UNC.API.Base.Infrastructure;
 using UNC.LogHandler.Extensions;
 using UNC.Services.Infrastructure;
 using UNC.HttpClient.Extensions;
@@ -9,7 +8,7 @@ using UNC.HttpClient.Interfaces;
 using UNC.Services.Utilities;
 using UNC_SelfService_DataAccessAPI_Repository;
 using Microsoft.EntityFrameworkCore;
-
+using UNC_SelfService_DataAccessAPI_Endpoint.GraphQl.UtilityDb;
 
 namespace UNC_SelfService_DataAccessAPI_Endpoint.Infrastructure
 {
@@ -18,14 +17,19 @@ namespace UNC_SelfService_DataAccessAPI_Endpoint.Infrastructure
 
         public static void RegisterDependencies(this IServiceCollection services, IConfiguration configuration, ILogger logger)
         {
-            
+
+            services.AddGraphQLServer()
+                .AddAuthorization()
+                //.AddAuthorizationCore()
+              .AddUtilityDbQueries();
+             
 
             services.RegisterDefaultUserPrincipal();
             services.RegisterHttpClientDependencies();
             services.RegisterLazyHttpClientFactory();
 
             //setup swagger docs
-            services.RegisterSwaggerDoc(configuration, GetSwaggerDocs());
+            services.RegisterSwaggerDoc<Program>(configuration, GetSwaggerDocs());
             //register AddAuthentication, Authorization, overloads relies on identity server parameters in {configuration}
             //Setting SkipAuth to false will bypass authentication and authorization
             //services.RegisterBearerFromConfiguration(configuration, GetCustomListOfPolicies());

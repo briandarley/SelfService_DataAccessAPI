@@ -18,11 +18,31 @@ namespace UNC_SelfService_DataAccessAPI_Services.Handlers.UtilityDb
 
         public async Task<ServiceResult<bool>> Handle(UpdateAppSettingCommand request, CancellationToken cancellationToken)
         {
-            _dbContext.AppSettings.Update(request.Entity);
 
-            await _dbContext.SaveChangesAsync(cancellationToken);
+            try
+            {
+                LogBeginRequest();
 
-            return new ServiceResult<bool>(true);
+                _dbContext.AppSettings.Update(request.Entity);
+
+                await _dbContext.SaveChangesAsync(cancellationToken);
+
+                return new ServiceResult<bool>(true);
+
+            }
+            catch (Exception ex)
+            {
+                LogException(ex, false);
+
+                return new ServiceResult<bool>(false)
+                {
+                    Errors = new List<string> { ex.Message }
+                };
+            }
+            finally
+            {
+                LogEndRequest();
+            }
 
         }
     }

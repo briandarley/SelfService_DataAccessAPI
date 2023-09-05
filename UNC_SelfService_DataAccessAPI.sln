@@ -13,15 +13,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UNC_SelfService_DataAccessA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UNC_SelfService_DataAccessAPI_Common", "UNC_SelfService_DataAccessAPI_Common\UNC_SelfService_DataAccessAPI_Common.csproj", "{3E1585CD-102F-4296-A281-F469501F9604}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnitTest_Common", "XUnitTest_Common\XUnitTest_Common.csproj", "{E89728FD-0E18-406A-8492-B664799E364F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XUnitTest_Common", "XUnitTest_Common\XUnitTest_Common.csproj", "{E89728FD-0E18-406A-8492-B664799E364F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnitTest_Repository", "XUnitTest_Repository\XUnitTest_Repository.csproj", "{4BEBE247-4D0B-46CC-B7ED-CE77251C6296}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XUnitTest_Repository", "XUnitTest_Repository\XUnitTest_Repository.csproj", "{4BEBE247-4D0B-46CC-B7ED-CE77251C6296}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnitTest_Services", "XUnitTest_Services\XUnitTest_Services.csproj", "{76109961-4B6D-4E8D-A6F4-135501701019}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XUnitTest_Services", "XUnitTest_Services\XUnitTest_Services.csproj", "{76109961-4B6D-4E8D-A6F4-135501701019}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnitTest_BusinessLogic", "XUnitTest_BusinessLogic\XUnitTest_BusinessLogic.csproj", "{C3CC1A2A-4686-4481-A007-E6FC88F55CA5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XUnitTest_BusinessLogic", "XUnitTest_BusinessLogic\XUnitTest_BusinessLogic.csproj", "{C3CC1A2A-4686-4481-A007-E6FC88F55CA5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnitTest_Endpoint", "XUnitTest_Endpoint\XUnitTest_Endpoint.csproj", "{38C49E42-30BC-4E7D-94A8-FD3EED795C9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XUnitTest_Endpoint", "XUnitTest_Endpoint\XUnitTest_Endpoint.csproj", "{38C49E42-30BC-4E7D-94A8-FD3EED795C9E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data Migration Notes", "Data Migration Notes", "{E3CFD3A6-3330-45BF-BC6F-F6A96729748F}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\..\UNC\Visual Studio Templates\WebAPIDataAccessTemplate\Repository\Notes\Managing Migrations.md = ..\..\..\..\..\UNC\Visual Studio Templates\WebAPIDataAccessTemplate\Repository\Notes\Managing Migrations.md
+		..\..\..\..\..\UNC\Visual Studio Templates\WebAPIDataAccessTemplate\Repository\Notes\Migrations.log = ..\..\..\..\..\UNC\Visual Studio Templates\WebAPIDataAccessTemplate\Repository\Notes\Migrations.log
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

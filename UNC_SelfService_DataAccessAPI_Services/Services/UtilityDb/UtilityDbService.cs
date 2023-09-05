@@ -13,5 +13,7 @@ namespace UNC_SelfService_DataAccessAPI_Services.Services.UtilityDb
         {
             _mediator = mediator;
         }
+
+        
     }
 }

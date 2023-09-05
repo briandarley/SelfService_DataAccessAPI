@@ -21,11 +21,30 @@ namespace UNC_SelfService_DataAccessAPI_Services.Handlers.UtilityDb
         public async Task<ServiceResult<bool>> Handle(DeleteAppSettingCommand request, CancellationToken cancellationToken)
         {
 
-            _dbContext.AppSettings.Remove(await _dbContext.AppSettings.SingleAsync(c => c.Id == request.EntityId, cancellationToken));
+            try
+            {
+                LogBeginRequest();
 
-            await _dbContext.SaveChangesAsync(cancellationToken);
+                _dbContext.AppSettings.Remove(await _dbContext.AppSettings.SingleAsync(c => c.Id == request.EntityId, cancellationToken));
 
-            return new ServiceResult<bool>(true);
+                await _dbContext.SaveChangesAsync(cancellationToken);
+
+                return new ServiceResult<bool>(true);
+
+            }
+            catch (Exception ex)
+            {
+                LogException(ex, false);
+
+                return new ServiceResult<bool>(false)
+                {
+                    Errors = new List<string> { ex.Message }
+                };
+            }
+            finally
+            {
+                LogEndRequest();
+            }
 
         }
     }

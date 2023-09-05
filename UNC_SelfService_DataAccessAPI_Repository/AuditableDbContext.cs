@@ -8,7 +8,17 @@ namespace UNC_SelfService_DataAccessAPI_Repository
         public AuditableDbContext(DbContextOptions<T> options) : base(options)
         {
         }
+        public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
+        {
+            SetAuditFields();
+            return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
+        }
         public override int SaveChanges()
+        {
+            SetAuditFields();
+            return base.SaveChanges();
+        }
+        private void SetAuditFields()
         {
             var currentUsername = "system"; // Replace with your actual logic to get the current user
 
@@ -41,8 +51,6 @@ namespace UNC_SelfService_DataAccessAPI_Repository
                 entity.CreateDate = (DateTime)originalValues["CreateDate"];
                 entity.CreateUser = (string)originalValues["CreateUser"];
             }
-
-            return base.SaveChanges();
         }
     }
 }
