@@ -64,6 +64,11 @@ static WebApplication RegisterSwaggerMappings(WebApplication app)
                     },
                     new UNC.API.Base.Models.SwaggerEndpointMappings
                     {
+                        Name = "SelfServiceDb Controller",
+                        Url = "selfServiceDb/swagger.json"
+                    },
+                    new UNC.API.Base.Models.SwaggerEndpointMappings
+                    {
                         Name = "SplunkDb Controller",
                         Url = "splunkDb/swagger.json"
                     },
@@ -112,6 +117,7 @@ static WebApplication RegisterSwaggerMappings(WebApplication app)
                         Name = "Test Controller",
                         Url = "tests/swagger.json"
                     }
+                    
 
             };
     app.ConfigureSwaggerMiddleware(mappings);

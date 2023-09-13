@@ -11,9 +11,9 @@ namespace UNC_SelfService_DataAccessAPI_Endpoint.Controllers.UtilityDb
     [ApiExplorerSettings(GroupName = "utilitiesDb")]
     public class OrganizationalUnitsController : BaseController
     {
-        private readonly IUtilityDbService _service;
+        private readonly IOrganizationalUnitService _service;
 
-        public OrganizationalUnitsController(ILogger<OrganizationalUnitsController> logger, IUtilityDbService service) : base(logger)
+        public OrganizationalUnitsController(ILogger<OrganizationalUnitsController> logger, IOrganizationalUnitService service) : base(logger)
         {
             _service = service;
         }
@@ -58,7 +58,7 @@ namespace UNC_SelfService_DataAccessAPI_Endpoint.Controllers.UtilityDb
                 return Ok(request.Data);
             }
 
-            if (request.Errors.Contains("ResourceNotFound"))
+            if (request.Errors.Contains(UNC.Models.Constants.ResponseCodes.ResourceNotFound))
             {
                 return NotFound();
             }
@@ -76,7 +76,7 @@ namespace UNC_SelfService_DataAccessAPI_Endpoint.Controllers.UtilityDb
                 return NoContent(); // Returns HTTP 204 No Content
             }
 
-            if (request.Errors.Contains("ResourceNotFound"))
+            if (request.Errors.Contains(UNC.Models.Constants.ResponseCodes.ResourceNotFound))
             {
                 return NotFound();
             }

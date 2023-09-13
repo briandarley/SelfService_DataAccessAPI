@@ -65,29 +65,23 @@ namespace UNC_SelfService_DataAccessAPI_Endpoint.Infrastructure
 
         private static void RegisterApplicationServices(this IServiceCollection services)
         {
-            //services.AddTransient<UNC.DAL.Data.Application.Interfaces.UtilityDb.IUtilityDbService, UNC.DAL.Data.Application.Services.UtilityDb.UtilityDbService>();
-            //services.AddTransient<UNC.DAL.Data.Application.Interfaces.SplunkDb.ISplunkDbService, UNC.DAL.Data.Application.Services.SplunkDb.SplunkDbService>();
-            //services.AddTransient<UNC.DAL.Data.Application.Interfaces.MidPointDb.IMidPointDbService, UNC.DAL.Data.Application.Services.MidPointDb.MidPointDbServices>();
-            //services.AddTransient<UNC.DAL.Data.Application.Interfaces.WinToolsDb.IWinToolsDbService, UNC.DAL.Data.Application.Services.WinToolsDb.WinToolsDbService>();
-            //services.AddTransient<UNC.DAL.Data.Application.Interfaces.O365Db.IO365DbServices, UNC.DAL.Data.Application.Services.O365Db.O365DbServices>();
-
-            //services.AddTransient<UNC.DAL.Data.Application.Interfaces.LiveDuDb.IAliasDomainsService, UNC.DAL.Data.Application.Services.LiveDuDb.LiveDuDbService>();
-            //services.AddTransient<UNC.DAL.Data.Application.Interfaces.LiveDuDb.IAcademicGroupCodeService, UNC.DAL.Data.Application.Services.LiveDuDb.LiveDuDbService>();
-            //services.AddTransient<UNC.DAL.Data.Application.Interfaces.LiveDuDb.IEmailAliasDomainService, UNC.DAL.Data.Application.Services.LiveDuDb.LiveDuDbService>();
-
-            //services.AddTransient<UNC.DAL.Data.Application.Interfaces.LiveDuDb.ITenantInfoService, UNC.DAL.Data.Application.Services.LiveDuDb.LiveDuDbService>();
-            //services.AddTransient<UNC.DAL.Data.Application.Interfaces.LiveDuDb.ILiveDuDbService, UNC.DAL.Data.Application.Services.LiveDuDb.LiveDuDbService>();
-            //services.AddTransient<UNC.DAL.Data.Application.Interfaces.LiveDuDb.IConfigurationService, UNC.DAL.Data.Application.Services.LiveDuDb.LiveDuDbService>();
-            //services.AddTransient<UNC.DAL.Data.Application.Interfaces.LiveDuDb.IActiveDirectoryChangeHistoryService, UNC.DAL.Data.Application.Services.LiveDuDb.LiveDuDbService>();
-            //services.AddTransient<UNC.DAL.Data.Application.Interfaces.IdentityDb.IIdentityDbService, UNC.DAL.Data.Application.Services.IdentityDb.IdentityDbService>();
-            //services.AddTransient<UNC.DAL.Data.Application.Interfaces.MimsDb.IMimsDbService, UNC.DAL.Data.Application.Services.MimsDb.MimsDbService>();
-            //services.AddTransient<UNC.DAL.Data.Application.Interfaces.LyrisDb.ILyrisDbService, UNC.DAL.Data.Application.Services.LyrisDb.LyrisDbService>();
-
+            
+            services.AddTransient<UNC_SelfService_DataAccessAPI_BusinessLogic.Interfaces.Services.UtilityDb.IApiEndpointService, UNC_SelfService_DataAccessAPI_BusinessLogic.Services.UtilityDb.UtilityDbService>();
+            services.AddTransient<UNC_SelfService_DataAccessAPI_BusinessLogic.Interfaces.Services.UtilityDb.IAppSettingService, UNC_SelfService_DataAccessAPI_BusinessLogic.Services.UtilityDb.UtilityDbService>();
+            services.AddTransient<UNC_SelfService_DataAccessAPI_BusinessLogic.Interfaces.Services.UtilityDb.IOrganizationalUnitService, UNC_SelfService_DataAccessAPI_BusinessLogic.Services.UtilityDb.UtilityDbService>();
+            services.AddTransient<UNC_SelfService_DataAccessAPI_BusinessLogic.Interfaces.Services.UtilityDb.IProcessService, UNC_SelfService_DataAccessAPI_BusinessLogic.Services.UtilityDb.UtilityDbService>();
+            services.AddTransient<UNC_SelfService_DataAccessAPI_BusinessLogic.Interfaces.Services.UtilityDb.IProcessHistory, UNC_SelfService_DataAccessAPI_BusinessLogic.Services.UtilityDb.UtilityDbService>();
+            services.AddTransient<UNC_SelfService_DataAccessAPI_BusinessLogic.Interfaces.Services.UtilityDb.IUtilityDbService, UNC_SelfService_DataAccessAPI_BusinessLogic.Services.UtilityDb.UtilityDbService>();
+            
+            services.AddTransient<UNC_SelfService_DataAccessAPI_BusinessLogic.Interfaces.Services.SelfServiceDb.IMenuItemService, UNC_SelfService_DataAccessAPI_BusinessLogic.Services.SelfServiceDb.SelfServiceDbService>();
+                services.AddTransient<UNC_SelfService_DataAccessAPI_BusinessLogic.Interfaces.Services.SelfServiceDb.IRouteItemService, UNC_SelfService_DataAccessAPI_BusinessLogic.Services.SelfServiceDb.SelfServiceDbService>();
+            services.AddTransient<UNC_SelfService_DataAccessAPI_BusinessLogic.Interfaces.Services.SelfServiceDb.ISelfServiceDbService, UNC_SelfService_DataAccessAPI_BusinessLogic.Services.SelfServiceDb.SelfServiceDbService>();
         }
 
         private static void RegisterInfrastructureServices(this IServiceCollection services)
         {
             services.AddTransient<UNC_SelfService_DataAccessAPI_Services.Interfaces.Services.UtilityDb.IUtilityDbService, UNC_SelfService_DataAccessAPI_Services.Services.UtilityDb.UtilityDbService>();
+            services.AddTransient<UNC_SelfService_DataAccessAPI_Services.Interfaces.Services.SelfServiceDb.ISelfServiceDbService, UNC_SelfService_DataAccessAPI_Services.Services.SelfServiceDb.SelfServiceDbService>();
             //services.AddTransient<UNC.DAL.Data.Infrastructure.Interfaces.Services.UtilityDb.IUtilityDbService, UNC.DAL.Data.Infrastructure.Services.UtilityDb.UtilityDbService>();
             //services.AddTransient<UNC.DAL.Data.Infrastructure.Interfaces.Services.SplunkDb.ISplunkDbService, UNC.DAL.Data.Infrastructure.Services.SplunkDb.SplunkDbService>();
             //services.AddTransient<UNC.DAL.Data.Infrastructure.Interfaces.Services.MidPointDb.IMidPointDbServices, UNC.DAL.Data.Infrastructure.Services.MidPointDb.MidPointDbServices>();
@@ -126,6 +120,8 @@ namespace UNC_SelfService_DataAccessAPI_Endpoint.Infrastructure
             //UtilityDb
 
             services.AddDbContext<UtilityDbContext>(options => options.UseSqlServer(configuration["UtilityDBConnection"], opts => opts.EnableRetryOnFailure()));
+
+            services.AddDbContext<SelfServiceDbContext>(options => options.UseSqlServer(configuration["SelfServiceDBConnection"], opts => opts.EnableRetryOnFailure()));
 
             ////MidPointDb
 
@@ -201,6 +197,13 @@ namespace UNC_SelfService_DataAccessAPI_Endpoint.Infrastructure
                 Title = "UtilitiesDb Controller",
                 Version = "v1",
                 Description = "API Endpoints for RWD of UtilitiesDb"
+            },
+            new SwaggerDocConfig
+            {
+                Name = "selfServiceDb",
+                Title = "SelfServiceDb Controller",
+                Version = "v1",
+                Description = "API Endpoints for RWD of SelfServiceDb"
             },
             new SwaggerDocConfig
             {

@@ -8,6 +8,12 @@ namespace UNC_SelfService_DataAccessAPI_Repository
         public AuditableDbContext(DbContextOptions<T> options) : base(options)
         {
         }
+
+        [DbFunction("SOUNDEX", IsBuiltIn = true)]
+        public static string Soundex(string s) => throw new NotSupportedException();
+
+
+
         public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
         {
             SetAuditFields();

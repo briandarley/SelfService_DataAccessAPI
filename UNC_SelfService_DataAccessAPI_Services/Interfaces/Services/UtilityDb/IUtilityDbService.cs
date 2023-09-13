@@ -20,6 +20,13 @@ namespace UNC_SelfService_DataAccessAPI_Services.Interfaces.Services.UtilityDb
         Task<ServiceResult<bool>> DeleteOrganizationalUnit(int entityId, CancellationToken cancellationToken);
         Task<ServiceResult<PagedResponse<OrganizationalUnit>>> GetOrganizationalUnits(OrganizationalUnitCriteria criteria, CancellationToken cancellationToken);
         Task<ServiceResult<bool>> UpdateOrganizationalUnit(OrganizationalUnit entity, CancellationToken cancellationToken);
-
+        Task<ServiceResult<Process>> AddProcess(Process entity, CancellationToken cancellationToken);
+        Task<ServiceResult<ProcessHistory>> AddProcessHistory(ProcessHistory entity, CancellationToken cancellationToken);
+        Task<ServiceResult<bool>> DeleteProcess(int entityId, CancellationToken cancellationToken);
+        Task<ServiceResult<bool>> DeleteProcessHistory(int entityId, CancellationToken cancellationToken);
+        Task<ServiceResult<List<Process>>> GetProcesses(ProcessCriteria criteria, CancellationToken cancellationToken);
+        Task<ServiceResult<PagedResponse<ProcessHistory>>> GetProcessHistories(ProcessHistoryCriteria criteria, CancellationToken cancellationToken);
+        Task<ServiceResult<bool>> UpdateProcess(Process entity, CancellationToken cancellationToken);
+        Task<ServiceResult<bool>> UpdateProcessHistory(ProcessHistory entity, CancellationToken cancellationToken);
     }
 }

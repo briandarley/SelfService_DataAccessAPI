@@ -11,9 +11,9 @@ namespace UNC_SelfService_DataAccessAPI_Endpoint.Controllers.UtilityDb;
 [ApiExplorerSettings(GroupName = "utilitiesDb")]
 public class AppSettingsController : BaseController
 {
-    private readonly IUtilityDbService _service;
+    private readonly IAppSettingService _service;
 
-    public AppSettingsController(ILogger<AppSettingsController> logger, IUtilityDbService service) : base(logger)
+    public AppSettingsController(ILogger<AppSettingsController> logger, IAppSettingService service) : base(logger)
     {
         _service = service;
     }
@@ -56,7 +56,7 @@ public class AppSettingsController : BaseController
             return Ok(request.Data);
         }
 
-        if (request.Errors.Contains("ResourceNotFound"))
+        if (request.Errors.Contains(UNC.Models.Constants.ResponseCodes.ResourceNotFound))
         {
             return NotFound();
         }
@@ -74,7 +74,7 @@ public class AppSettingsController : BaseController
             return NoContent(); // Returns HTTP 204 No Content
         }
 
-        if (request.Errors.Contains("ResourceNotFound"))
+        if (request.Errors.Contains(UNC.Models.Constants.ResponseCodes.ResourceNotFound))
         {
             return NotFound();
         }

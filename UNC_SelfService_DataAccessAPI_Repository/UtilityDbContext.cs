@@ -1,14 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using UNC_SelfService_DataAccessAPI_Common.Entities.SelfServiceDb;
 using UNC_SelfService_DataAccessAPI_Common.Entities.UtilityDb;
 
 namespace UNC_SelfService_DataAccessAPI_Repository
 {
-    public class UtilityDbContext: AuditableDbContext<UtilityDbContext>
+    public class UtilityDbContext : AuditableDbContext<UtilityDbContext>
     {
         public UtilityDbContext(DbContextOptions<UtilityDbContext> options) : base(options)
         {
         }
-        
+
         public DbSet<AppSetting> AppSettings { get; set; }
         public DbSet<ApiEndpoint> ApiEndpoints { get; set; }
         public DbSet<OrganizationalUnit> OrganizationalUnits { get; set; }
@@ -18,15 +19,17 @@ namespace UNC_SelfService_DataAccessAPI_Repository
         public DbSet<ProcessHistory> ProcessHistories { get; set; }
 
 
+
+
         public async Task MigrateDatabase()
         {
 
         }
-              
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-        
+
             BuildModelForAppSettings(builder);
             BuildModelForApiEndpoint(builder);
             BuildModelForOrganizationalUnit(builder);
@@ -34,9 +37,11 @@ namespace UNC_SelfService_DataAccessAPI_Repository
             BuildModelForProcess(builder);
             BuildModelForProcessSchedule(builder);
             BuildModelForProcessHistory(builder);
+            
             //SeedDatabase(builder);
 
         }
+
 
         private void BuildModelForProcess(ModelBuilder builder)
         {
