@@ -9,6 +9,8 @@ namespace UNC_SelfService_DataAccessAPI_Repository
         public DbSet<MenuItem> MenuItems { get; set; }
         public DbSet<RouteItem> RouteItems { get; set; }
         public DbSet<RouteItemTag> RouteItemTags { get; set; }
+        public DbSet<RouteScheduleDowntime> RouteScheduleDowntimes { get; set; }
+
 
         public SelfServiceDbContext(DbContextOptions<SelfServiceDbContext> options) : base(options)
         {
@@ -24,9 +26,31 @@ namespace UNC_SelfService_DataAccessAPI_Repository
             BuildModelForMenuItems(builder);
             BuildModelForRouteItems(builder);
             BuildModelForRouteItemTags(builder);
-
+            BuildModelForRouteScheduleDowntime(builder);
         }
 
+        private void BuildModelForRouteScheduleDowntime(ModelBuilder builder)
+        {
+            builder.Entity<RouteScheduleDowntime>(entry =>
+            {
+                entry.ToTable("RouteScheduleDowntime", "SelfService");
+                // Primary Key
+                entry.HasKey(r => r.Id);
+
+                // Properties
+                entry.Property(r => r.ScheduledOnDate).IsRequired();
+                entry.Property(r => r.NewRoute).IsRequired().HasMaxLength(255); 
+                entry.Property(r => r.CurrentRoute).IsRequired().HasMaxLength(255);
+                entry.Property(r => r.Archived).IsRequired();
+
+                // Relationships
+                entry.HasOne(r => r.RouteItem)
+                    .WithMany() // Assuming RouteItem has a collection of RouteScheduleDowntime
+                    .HasForeignKey(r => r.RouteItemId)
+                    .OnDelete(DeleteBehavior.Restrict); // Assuming you don't want to cascade delete
+
+            });
+        }
 
         private void BuildModelForMenuItems(ModelBuilder builder)
         {

@@ -1,6 +1,5 @@
-﻿namespace UNC_SelfService_DataAccessAPI_Services.Interfaces.Services.SelfServiceDb
+﻿namespace UNC_SelfService_DataAccessAPI_Services.Interfaces.Services.SelfServiceDb;
+
+public interface ISelfServiceDbService:IMenuItemService,IRouteItemService
 {
-    public interface ISelfServiceDbService:IMenuItemService,IRouteItemService
-    {
-    }
 }

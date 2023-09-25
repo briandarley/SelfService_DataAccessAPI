@@ -73,29 +73,25 @@ namespace UNC_SelfService_DataAccessAPI_Endpoint.Infrastructure
             services.AddTransient<UNC_SelfService_DataAccessAPI_BusinessLogic.Interfaces.Services.UtilityDb.IProcessHistory, UNC_SelfService_DataAccessAPI_BusinessLogic.Services.UtilityDb.UtilityDbService>();
             services.AddTransient<UNC_SelfService_DataAccessAPI_BusinessLogic.Interfaces.Services.UtilityDb.IUtilityDbService, UNC_SelfService_DataAccessAPI_BusinessLogic.Services.UtilityDb.UtilityDbService>();
             
+            
             services.AddTransient<UNC_SelfService_DataAccessAPI_BusinessLogic.Interfaces.Services.SelfServiceDb.IMenuItemService, UNC_SelfService_DataAccessAPI_BusinessLogic.Services.SelfServiceDb.SelfServiceDbService>();
                 services.AddTransient<UNC_SelfService_DataAccessAPI_BusinessLogic.Interfaces.Services.SelfServiceDb.IRouteItemService, UNC_SelfService_DataAccessAPI_BusinessLogic.Services.SelfServiceDb.SelfServiceDbService>();
             services.AddTransient<UNC_SelfService_DataAccessAPI_BusinessLogic.Interfaces.Services.SelfServiceDb.ISelfServiceDbService, UNC_SelfService_DataAccessAPI_BusinessLogic.Services.SelfServiceDb.SelfServiceDbService>();
+            services.AddTransient<UNC_SelfService_DataAccessAPI_BusinessLogic.Interfaces.Services.SelfServiceDb.IRouteScheduleDowntimeService, UNC_SelfService_DataAccessAPI_BusinessLogic.Services.SelfServiceDb.RouteScheduleDowntimeService>();
         }
 
         private static void RegisterInfrastructureServices(this IServiceCollection services)
         {
             services.AddTransient<UNC_SelfService_DataAccessAPI_Services.Interfaces.Services.UtilityDb.IUtilityDbService, UNC_SelfService_DataAccessAPI_Services.Services.UtilityDb.UtilityDbService>();
             services.AddTransient<UNC_SelfService_DataAccessAPI_Services.Interfaces.Services.SelfServiceDb.ISelfServiceDbService, UNC_SelfService_DataAccessAPI_Services.Services.SelfServiceDb.SelfServiceDbService>();
-            //services.AddTransient<UNC.DAL.Data.Infrastructure.Interfaces.Services.UtilityDb.IUtilityDbService, UNC.DAL.Data.Infrastructure.Services.UtilityDb.UtilityDbService>();
-            //services.AddTransient<UNC.DAL.Data.Infrastructure.Interfaces.Services.SplunkDb.ISplunkDbService, UNC.DAL.Data.Infrastructure.Services.SplunkDb.SplunkDbService>();
-            //services.AddTransient<UNC.DAL.Data.Infrastructure.Interfaces.Services.MidPointDb.IMidPointDbServices, UNC.DAL.Data.Infrastructure.Services.MidPointDb.MidPointDbServices>();
-            //services.AddTransient<UNC.DAL.Data.Infrastructure.Interfaces.Services.WinToolsDb.IWinToolsDbService, UNC.DAL.Data.Infrastructure.Services.WinToolsDb.WinToolsDbService>();
-            //services.AddTransient<UNC.DAL.Data.Infrastructure.Interfaces.Services.O365Db.IO365DbServices, UNC.DAL.Data.Infrastructure.Services.O365Db.O365DbServices>();
-            //services.AddTransient<UNC.DAL.Data.Infrastructure.Interfaces.Services.LiveDuDb.ILiveDuDbService, UNC.DAL.Data.Infrastructure.Services.LiveDuDb.LiveDuDbService>();
-            //services.AddTransient<UNC.DAL.Data.Infrastructure.Interfaces.Services.IdentityDb.IIdentityService, UNC.DAL.Data.Infrastructure.Services.IdentityDb.IdentityService>();
-            //services.AddTransient<UNC.DAL.Data.Infrastructure.Interfaces.Services.MimsDb.IMimsDbService, UNC.DAL.Data.Infrastructure.Services.MimsDb.MimsDbService>();
-            //services.AddTransient<UNC.DAL.Data.Infrastructure.Interfaces.Services.LyrisDb.ILyrisDbService, UNC.DAL.Data.Infrastructure.Services.LyrisDb.LyrisDbService>();
+            services.AddTransient<UNC_SelfService_DataAccessAPI_Services.Interfaces.Services.SelfServiceDb.IRouteScheduleDowntimeService, UNC_SelfService_DataAccessAPI_Services.Services.SelfServiceDb.SelfServiceDbService>();
+            
         }
 
         private static void RegisterDatabaseUnitOfWork(this IServiceCollection services)
         {
-            services.AddTransient<UNC_SelfService_DataAccessAPI_BusinessLogic.Interfaces.Services.UtilityDb.IUtilityDbService, UNC_SelfService_DataAccessAPI_BusinessLogic.Services.UtilityDb.UtilityDbService>();
+            //services.AddTransient<UNC_SelfService_DataAccessAPI_BusinessLogic.Interfaces.Services.UtilityDb.IUtilityDbService, UNC_SelfService_DataAccessAPI_BusinessLogic.Services.UtilityDb.UtilityDbService>();
+            //services.AddTransient<UNC_SelfService_DataAccessAPI_BusinessLogic.Interfaces.Services.SelfServiceDb.ISelfServiceDbService, UNC_SelfService_DataAccessAPI_BusinessLogic.Services.SelfServiceDb.SelfServiceDbService>();
 
             //services.AddTransient<IMidPointDbContext, UNC.DAL.Data.Infrastructure.DatabaseContexts.MidPointDbContext>();
             //services.AddTransient<ISplunkDbContext, UNC.DAL.Data.Infrastructure.DatabaseContexts.SplunkDbContext>();

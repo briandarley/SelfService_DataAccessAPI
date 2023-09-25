@@ -1,30 +1,29 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using UNC.API.Base;
 using UNC_SelfService_DataAccessAPI_BusinessLogic.Interfaces.Services.SelfServiceDb;
 using UNC_SelfService_DataAccessAPI_Common.Criteria.SelfServiceDb;
 using UNC_SelfService_DataAccessAPI_Common.Entities.SelfServiceDb;
 
 namespace UNC_SelfService_DataAccessAPI_Endpoint.Controllers.SelfServiceDb;
-
-
-
-[Route("v1/self-service-db/menu-items")]
+[Route("v1/self-service-db/route-schedule-downtime")]
 [ApiController]
 [ApiExplorerSettings(GroupName = "selfServiceDb")]
-public class MenuItemsController : BaseController
+public class RouteScheduleDowntimeController : BaseController
 {
-    private readonly ISelfServiceDbService _service;
+    private readonly IRouteScheduleDowntimeService _service;
 
-    public MenuItemsController(ILogger<MenuItemsController> logger, ISelfServiceDbService service) : base(logger)
+    public RouteScheduleDowntimeController(ILogger<RouteScheduleDowntimeController> logger, UNC_SelfService_DataAccessAPI_BusinessLogic.Interfaces.Services.SelfServiceDb.IRouteScheduleDowntimeService service) : base(logger)
     {
         _service = service;
     }
 
+    
+
 
     [HttpGet]
-    public async Task<IActionResult> GetMenuItems([FromQuery] MenuItemCriteria criteria, CancellationToken cancellationToken)
+    public async Task<IActionResult> GetRouteScheduleDowntimes([FromQuery] RouteScheduleDowntimeCriteria criteria, CancellationToken cancellationToken)
     {
-        var request = await _service.GetMenuItems(criteria, cancellationToken);
+        var request = await _service.GetRouteScheduleDowntimes(criteria, cancellationToken);
 
         if (request.Success)
         {
@@ -35,9 +34,9 @@ public class MenuItemsController : BaseController
 
     }
     [HttpPost]
-    public async Task<IActionResult> AddMenuItem(MenuItem entity, CancellationToken cancellationToken)
+    public async Task<IActionResult> AddRouteScheduleDowntime([FromBody] RouteScheduleDowntime entity, CancellationToken cancellationToken)
     {
-        var request = await _service.AddMenuItem(entity, cancellationToken);
+        var request = await _service.AddRouteScheduleDowntime(entity, cancellationToken);
 
         if (request.Success)
         {
@@ -46,12 +45,13 @@ public class MenuItemsController : BaseController
 
         return BadRequest(new { errors = request.Errors });
 
+
     }
     [HttpPut, Route("{entityId}")]
-    public async Task<IActionResult> UpdateMenuItem(int entityId, [FromBody] MenuItem entity, CancellationToken cancellationToken)
+    public async Task<IActionResult> UpdateRouteScheduleDowntime(int entityId, [FromBody]RouteScheduleDowntime entity, CancellationToken cancellationToken)
     {
         entity.Id = entityId;
-        var request = await _service.UpdateMenuItem(entity, cancellationToken);
+        var request = await _service.UpdateRouteScheduleDowntime(entity, cancellationToken);
 
 
         if (request.Success)
@@ -67,11 +67,12 @@ public class MenuItemsController : BaseController
 
         return BadRequest(new { errors = request.Errors });
 
+
     }
     [HttpDelete, Route("{entityId}")]
-    public async Task<IActionResult> DeleteMenuItem(int entityId, CancellationToken cancellationToken)
+    public async Task<IActionResult> DeleteRouteScheduleDowntime(int entityId, CancellationToken cancellationToken)
     {
-        var request = await _service.DeleteMenuItem(entityId, cancellationToken);
+        var request = await _service.DeleteRouteScheduleDowntime(entityId, cancellationToken);
 
         if (request.Success)
         {
@@ -84,6 +85,7 @@ public class MenuItemsController : BaseController
         }
 
         return BadRequest(new { errors = request.Errors });
+
     }
 
 

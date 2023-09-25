@@ -5,7 +5,7 @@ using UNC_SelfService_DataAccessAPI_Services.Interfaces.Services.SelfServiceDb;
 
 namespace UNC_SelfService_DataAccessAPI_Services.Services.SelfServiceDb
 {
-    public partial class SelfServiceDbService : ServiceBase<SelfServiceDbService>, ISelfServiceDbService
+    public partial class SelfServiceDbService : ServiceBase<SelfServiceDbService>, ISelfServiceDbService, IRouteScheduleDowntimeService
     {
         private readonly IMediator _mediator;
 

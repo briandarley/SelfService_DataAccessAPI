@@ -20,7 +20,7 @@ namespace UNC_SelfService_DataAccessAPI_Endpoint.Controllers.SelfServiceDb
 
 
         [HttpGet]
-        public async Task<IActionResult> GetAppSettings([FromQuery] RouteItemCriteria criteria, CancellationToken cancellationToken)
+        public async Task<IActionResult> GetRouteItems([FromQuery] RouteItemCriteria criteria, CancellationToken cancellationToken)
         {
             var request = await _service.GetRouteItems(criteria, cancellationToken);
 
@@ -33,7 +33,7 @@ namespace UNC_SelfService_DataAccessAPI_Endpoint.Controllers.SelfServiceDb
 
         }
         [HttpPost]
-        public async Task<IActionResult> AddAppSetting(RouteItem entity, CancellationToken cancellationToken)
+        public async Task<IActionResult> AddAppSetting([FromBody]RouteItem entity, CancellationToken cancellationToken)
         {
             var request = await _service.AddRouteItem(entity, cancellationToken);
 
